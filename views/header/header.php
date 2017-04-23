@@ -10,9 +10,9 @@
         <link href="/css/styles.css" rel="stylesheet"/>
 
         <?php if (isset($title)): ?>
-            <title>C$50 Finance: <?= htmlspecialchars($title) ?></title>
+            <title>UrlShortener: <?= htmlspecialchars($title) ?></title>
         <?php else: ?>
-            <title>C$50 Finance</title>
+            <title>UrlShortener</title>
         <?php endif ?>
 
         <!-- https://jquery.com/ -->
@@ -31,17 +31,19 @@
 
             <div id="top">
                 <div>
-                    <a href="/"><img alt="C$50 Finance" src="/img/logo.png"/></a>
+                    <a href="/"><img alt="UrlShortener_logo" src="/img/shortener_logo_1.png"/></a>
                 </div>
-                <?php if (!empty($_SESSION["id"])): ?>
                     <ul class="nav nav-pills">
-                        <li><a href="quote.php">Quote</a></li>
-                        <li><a href="buy.php">Buy</a></li>
-                        <li><a href="sell.php">Sell</a></li>
-                        <li><a href="history.php">History</a></li>
+                        <li><a href="quote.php">Shortener</a></li>
+                        <li><a href="buy.php">About</a></li>
+                    <?php if (!empty($_SESSION["id"])): ?>
                         <li><a href="logout.php"><strong>Log Out</strong></a></li>
+                    <?php endif ?> 
+                    <?php if (empty($_SESSION["id"])): ?>
+                        <li><a href="login.php"><strong>Log In</strong></a></li>
+                        <li><a href="register.php"><strong>Register</strong></a></li>
+                    <?php endif ?> 
                     </ul>
-                <?php endif ?>
             </div>
 
             <div id="middle">

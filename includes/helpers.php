@@ -49,68 +49,7 @@
         session_destroy();
     }
 
-    /**
-     * Returns a stock by symbol (case-insensitively) else false if not found.
-     */
-    function lookup($symbol)
-    {
-        // reject symbols that start with ^
-        if (preg_match("/^\^/", $symbol))
-        {
-            return false;
-        }
-
-        // reject symbols that contain commas
-        if (preg_match("/,/", $symbol))
-        {
-            return false;
-        }
-
-        // headers for proxy servers
-        $headers = [
-            "Accept" => "*/*",
-            "Connection" => "Keep-Alive",
-            "User-Agent" => sprintf("curl/%s", curl_version()["version"])
-        ];
-
-        // open connection to Yahoo
-        $context = stream_context_create([
-            "http" => [
-                "header" => implode(array_map(function($value, $key) { return sprintf("%s: %s\r\n", $key, $value); }, $headers, array_keys($headers))),
-                "method" => "GET"
-            ]
-        ]);
-        $handle = @fopen("http://download.finance.yahoo.com/d/quotes.csv?f=snl1&s={$symbol}", "r", false, $context);
-        if ($handle === false)
-        {
-            // trigger (big, orange) error
-            trigger_error("Could not connect to Yahoo!", E_USER_ERROR);
-            exit;
-        }
- 
-        // download first line of CSV file
-        $data = fgetcsv($handle);
-        if ($data === false || count($data) == 1)
-        {
-            return false;
-        }
-
-        // close connection to Yahoo
-        fclose($handle);
-
-        // ensure symbol was found
-        if ($data[2] === "N/A" || $data[2] === "0.00")
-        {
-            return false;
-        }
-
-        // return stock as an associative array
-        return [
-            "symbol" => strtoupper($data[0]),
-            "name" => $data[1],
-            "price" => floatval($data[2])
-        ];
-    }
+    
 
     /**
      * Redirects user to location, which can be a URL or
@@ -134,7 +73,7 @@
     /**
      * Renders view, passing in values.
      */
-    function render($view, $values = [])
+    function render($view , $values = [])
     {
         // if view exists, render it
         if (file_exists("../views/{$view}"))
@@ -143,9 +82,9 @@
             extract($values);
 
             // render view (between header and footer)
-            require("../views/header.php");
+            require("../views/header/header.php");
             require("../views/{$view}");
-            require("../views/footer.php");
+            require("../views/footer/footer.php");
             exit;
         }
 
