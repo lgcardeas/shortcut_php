@@ -4,19 +4,19 @@
      * helpers.php
      *
      * Computer Science 50
-     * Problem Set 7
+     * Problem Set 7 Modified
      *
      * Helper functions.
      */
 
-    require_once("config.php");
+    
 
     /**
      * Apologizes to user with message.
      */
     function apologize($message)
     {
-        render("apology.php", ["message" => $message]);
+        render("tools/apology.php", ["message" => $message]);
     }
 
     /**
@@ -93,6 +93,29 @@
         {
             trigger_error("Invalid view: {$view}", E_USER_ERROR);
         }
+    }
+    
+    /*
+    * Function to build a user id 
+    */
+    
+    function buildUserId($lastId){
+        
+    }
+    
+    
+    /*
+    *   Each user are going to have a folder to storeg each links thas hi has shortened it.
+    */
+    function createFolderForUser($path){
+    
+    }
+    
+    /*
+    * Each link shortened will have an associate php file
+    */
+    function createPhpFile($path){
+        
     }
 
 ?>

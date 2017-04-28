@@ -4,7 +4,7 @@
      * config.php
      *
      * Computer Science 50
-     * Problem Set 7
+     * Problem Set 7 modified
      *
      * Configures app.
      */
@@ -14,10 +14,12 @@
     error_reporting(E_ALL);
 
     // requirements
-    require("helpers.php");
+    require_once("helpers.php");
+    require_once("shortenerController.php");
+    
 
     // CS50 Library
-    require("../vendor/library50-php-5/CS50/CS50.php");
+    require_once("../vendor/library50-php-5/CS50/CS50.php");
     CS50::init(__DIR__ . "/../config.json");
 
     // enable sessions

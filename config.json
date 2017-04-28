@@ -1,7 +1,7 @@
 {
     "database": {
         "host": "localhost",
-        "name": "pset7",
+        "name": "shortener",
         "username": "lgcardenas91",
         "password": "zrrJ8zNEdpuTwuty"
     }

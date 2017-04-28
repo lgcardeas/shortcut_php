@@ -7,7 +7,7 @@
         <!-- http://getbootstrap.com/ -->
         <link href="/css/bootstrap.min.css" rel="stylesheet"/>
 
-        <link href="/css/styles.css" rel="stylesheet"/>
+        <link href="/css/styles.css?v=<?=time();?>" rel="stylesheet"/>
 
         <?php if (isset($title)): ?>
             <title>UrlShortener: <?= htmlspecialchars($title) ?></title>
@@ -34,8 +34,9 @@
                     <a href="/"><img alt="UrlShortener_logo" src="/img/shortener_logo_1.png"/></a>
                 </div>
                     <ul class="nav nav-pills">
-                        <li><a href="quote.php">Shortener</a></li>
-                        <li><a href="buy.php">About</a></li>
+                        <li><a href="shortener.php">Shortener</a></li>
+                        <li><a href="history.php">History</a></li>
+                        <li><a href="about.php">About</a></li>
                     <?php if (!empty($_SESSION["id"])): ?>
                         <li><a href="logout.php"><strong>Log Out</strong></a></li>
                     <?php endif ?> 

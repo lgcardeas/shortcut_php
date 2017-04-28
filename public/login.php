@@ -1,13 +1,13 @@
 <?php
 
     // configuration
-    require("../includes/config.php"); 
+    require_once("../includes/config.php"); 
 
     // if user reached page via GET (as by clicking a link or via redirect)
     if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
         // else render form
-        render("login_form.php", ["title" => "Log In"]);
+        render("body/authentication/login_form.php", ["title" => "Log In"]);
     }
 
     // else if user reached page via POST (as by submitting a form via POST)
